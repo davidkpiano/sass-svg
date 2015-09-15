@@ -1,0 +1,34 @@
+@import '../node_modules/sassdash/index';
+
+$_SVG_STACK: null !global;
+
+@mixin svg($type, $attrs) {
+  $previous: $_SVG_STACK;
+  $_SVG_STACK: () !global;
+
+  @content;
+
+  $element: (
+    type: $type,
+    attrs: $attrs,
+    children: $_SVG_STACK
+  );
+
+  @if $previous != null {  
+    $_SVG_STACK: $previous !global;
+
+    $_SVG_STACK: append($_SVG_STACK, $element) !global;
+  } @else {
+    // RENDER svg here
+    @debug $_SVG_STACK;
+  }
+}
+
+@include svg(foo, a1) {
+  @include svg(bar, a2) {
+    @include svg(baz, a3);
+    @include svg(bam, a4);
+  }
+
+  @include svg(test, a5);
+}
