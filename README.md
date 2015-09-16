@@ -5,6 +5,7 @@ Inline SVG for Sass.
 - `npm install sass-svg --save`
 
 ```scss
+// Will likely be ../node_modules/sass-svg/index
 @import 'path/to/sass-svg';
 
 .arrow {
