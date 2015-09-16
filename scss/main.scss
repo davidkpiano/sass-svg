@@ -20,15 +20,41 @@ $_SVG_STACK: null !global;
     $_SVG_STACK: append($_SVG_STACK, $element) !global;
   } @else {
     // RENDER svg here
-    @debug $_SVG_STACK;
+    $rendered-svg: _($_SVG_STACK,
+      _map svg-render,
+      _join);
+
+    @debug $rendered-svg;
   }
 }
 
-@include svg(foo, a1) {
-  @include svg(bar, a2) {
-    @include svg(baz, a3);
-    @include svg(bam, a4);
+@function svg-render($element, $args...) {
+  $type: _get($element, 'type');
+  $attrs: _($element,
+    _get 'attrs',
+    _map svg-render-attr,
+    _join ' ');
+  $children: if(length(_get($element, 'children')) > 0,
+    _($element,
+      _get 'children',
+      _map svg-render,
+      _join),
+    ());
+
+  @return if(length($children) > 0,
+    '<#{$type} #{$attrs}>#{$children}</#{$type}>',
+    '<#{$type} #{$attrs}/>');
+}
+
+@function svg-render-attr($value, $key, $args...) {
+  @return unquote('#{$key}="#{$value}"');
+}
+
+@include svg(foo, (a: 1)) {
+  @include svg(bar, (a: 2)) {
+    @include svg(baz, (a: 3));
+    @include svg(bam, (a: 4));
   }
 
-  @include svg(test, a5);
+  @include svg(test, (a: 5));
 }
