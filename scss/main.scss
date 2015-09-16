@@ -7,8 +7,6 @@ $_SVG_STACK: null !global;
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
-  test: foo;
-
   @content;
 
   $element: (
@@ -16,8 +14,6 @@ $_SVG_STACK: null !global;
     attrs: $attrs,
     children: $_SVG_STACK
   );
-
-  @debug $element;
 
   @if $previous != null {  
     $_SVG_STACK: $previous !global;
@@ -30,9 +26,7 @@ $_SVG_STACK: null !global;
         xmlns: 'http://www.w3.org/2000/svg'),
       children: ($element,));
 
-    background: url('"data:image/svg+xml;charset=utf8,'
-      + encode(svg-render($root-element))
-      + '")');
+    background: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($root-element))}");
 
     $_SVG_STACK: null !global;
   }
@@ -49,32 +43,13 @@ $_SVG_STACK: null !global;
       _get 'children',
       _map svg-render,
       _join),
-    ());
+    _get($element, 'attrs.content'));
 
-  @return if(length($children) > 0,
+  @return if($children and _size($children) > 0,
     '<#{$type} #{$attrs}>#{$children}</#{$type}>',
     '<#{$type} #{$attrs}/>');
 }
 
 @function svg-render-attr($value, $key, $args...) {
-  @return unquote('#{$key}="#{$value}"');
+  @return '#{$key}="#{$value}"';
 }
-
-@function _svg-escape-quotes($string) {
-  @return _replace($string, '"', '\\"');
-}
-
-@function _svg-escape-uri($string) {
-  @return _($string,
-    _replace '&' '%26',
-    _replace '')
-}
-
-// @include svg(foo, (a: 1)) {
-//   @include svg(bar, (a: 2)) {
-//     @include svg(baz, (a: 3));
-//     @include svg(bam, (a: 4));
-//   }
-
-//   @include svg(test, (a: 5));
-// }
