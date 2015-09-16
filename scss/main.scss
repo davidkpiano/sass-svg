@@ -3,7 +3,7 @@
 
 $_SVG_STACK: null !global;
 
-@mixin svg($type, $attrs) {
+@mixin svg($type: 'svg', $attrs: ()) {
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
@@ -20,13 +20,10 @@ $_SVG_STACK: null !global;
 
     $_SVG_STACK: append($_SVG_STACK, $element) !global;
   } @else {
-    $root-element: (
-      type: 'svg',
-      attrs: (
-        xmlns: 'http://www.w3.org/2000/svg'),
-      children: ($element,));
+    $element: _modify($element, 'attrs',
+      _defaults (xmlns: 'http://www.w3.org/2000/svg'));
 
-    background: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($root-element))}");
+    background: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($element))}");
 
     $_SVG_STACK: null !global;
   }
