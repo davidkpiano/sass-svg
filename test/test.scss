@@ -1,0 +1,32 @@
+@import '../index';
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+*, *:before, *:after {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.arrow {
+  background-color: white;
+  background-size: cover;
+
+  @include svg {
+    @include svg('polygon', (
+      fill: blue,
+      points: (50, 100 0, 0 0, 100)
+    ));
+  }
+}
+
+.arrow {
+  @include svg {
+    @include svg('polygon', (
+      fill: green,
+      points: (50,100 0,0 0,100)
+    ));
+  }
+}
