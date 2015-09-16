@@ -7,6 +7,8 @@ $_SVG_STACK: null !global;
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
+  test: foo;
+
   @content;
 
   $element: (
@@ -15,17 +17,24 @@ $_SVG_STACK: null !global;
     children: $_SVG_STACK
   );
 
+  @debug $element;
+
   @if $previous != null {  
     $_SVG_STACK: $previous !global;
 
     $_SVG_STACK: append($_SVG_STACK, $element) !global;
   } @else {
-    // RENDER svg here
-    $rendered-svg: _($_SVG_STACK,
-      _map svg-render,
-      _join);
+    $root-element: (
+      type: 'svg',
+      attrs: (
+        xmlns: 'http://www.w3.org/2000/svg'),
+      children: ($element,));
 
-    @debug encode($rendered-svg);
+    background: url('"data:image/svg+xml;charset=utf8,'
+      + encode(svg-render($root-element))
+      + '")');
+
+    $_SVG_STACK: null !global;
   }
 }
 
@@ -61,11 +70,11 @@ $_SVG_STACK: null !global;
     _replace '')
 }
 
-@include svg(foo, (a: 1)) {
-  @include svg(bar, (a: 2)) {
-    @include svg(baz, (a: 3));
-    @include svg(bam, (a: 4));
-  }
+// @include svg(foo, (a: 1)) {
+//   @include svg(bar, (a: 2)) {
+//     @include svg(baz, (a: 3));
+//     @include svg(bam, (a: 4));
+//   }
 
-  @include svg(test, (a: 5));
-}
+//   @include svg(test, (a: 5));
+// }
