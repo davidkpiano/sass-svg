@@ -1,6 +1,6 @@
 {
   "name": "sass-svg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inline SVG for Sass.",
   "main": "index.js",
   "scripts": {
