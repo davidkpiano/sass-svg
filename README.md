@@ -72,4 +72,26 @@ $sass-color: #CC6699;
 ```
 
 **Result:**
+
 ![Sass logo](http://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png)
+
+## Usage
+The API is simple. There's one mixin: `@include svg($type, $attrs)`.
+
+- `$type` (String) is the SVG element type; e.g. for `<path />`, it would be `$type: 'path'`.
+- `$attrs` (Map) are all the attributes for the SVG element, such as `$attrs: (fill: white)`.
+
+For SVG elements with text inside, such as `<text>Hello, world</text>`, use the (non-standard) `content` attribute. E.g. `@include svg('text', (content: 'Hello, world'));`
+
+SVG elements can be (infinitely) nested, as well:
+
+```scss
+@include svg {
+  @include svg('g', (...)) {
+    @include svg('path', (...));
+    @include svg('rect', (...));
+  }
+}
+```
+
+Always remember to include the root `<svg>` element! You can simply `@include svg { ... }` (which defaults to `type: 'svg'`), and you can provide just attributes: `@include svg((x: 0, y: 0, ...)) { ... }` (which also defaults to `type: svg`).
