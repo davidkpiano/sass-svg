@@ -32,7 +32,7 @@ $_SVG_STACK: null !global;
     $element: _modify($element, 'attrs',
       _defaults (xmlns: 'http://www.w3.org/2000/svg'));
 
-    background: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($element))}");
+    background-image: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($element))}");
 
     $_SVG_STACK: null !global;
   }
@@ -57,5 +57,9 @@ $_SVG_STACK: null !global;
 }
 
 @function svg-render-attr($value, $key, $args...) {
+  @if (type-of($value) != 'color') {
+    $value: _replace($value, '\A', ' ');
+  }
+
   @return '#{$key}="#{$value}"';
 }
