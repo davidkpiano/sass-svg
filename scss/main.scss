@@ -3,11 +3,20 @@
 
 $_SVG_STACK: null !global;
 
-@mixin svg($type: 'svg', $attrs: ()) {
+@mixin svg($type: 'svg', $attrs: null) {
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
   @content;
+
+  // Argument juggling
+  @if (type-of($type) == 'map'
+    and not $attrs
+    and not $previous
+  ) {
+    $attrs: $type;
+    $type: 'svg';
+  }
 
   $element: (
     type: $type,

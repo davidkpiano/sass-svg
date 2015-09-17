@@ -13,20 +13,42 @@ html, body {
 .arrow {
   background-color: white;
   background-size: cover;
+}
 
-  @include svg {
+.arrow {
+  @include svg() {
+    @include svg('polygon', (
+      fill: green,
+      points: (50,100 0,0 0,100)
+    ));
+
     @include svg('polygon', (
       fill: blue,
-      points: (50, 100 0, 0 0, 100)
+      points: (50,100 0,0 0,100),
+      transform: translateX(100)
     ));
   }
 }
 
-.arrow {
-  @include svg {
-    @include svg('polygon', (
-      fill: green,
-      points: (50,100 0,0 0,100)
+.dms {
+  @include svg((
+    x: 0px,
+    y: 0px,
+    viewBox: 0 0 48 48,
+    enable-background: new 0 0 48 48,
+    'xml:space': preserve
+  )) {
+    @include svg('rect', (
+      x: 4,
+      y: 2,
+      fill: #010101,
+      width: 4,
+      height: 46
+    ));
+
+    @include svg('path', (
+      fill: #010101,
+      d: 'M41.5,2H38c-0.4-0.9-1.4-2.1-2.3-2h-9.2c-1,0-1.9,1.1-2.3,2H10v46h31.5c1.4,0,2.5-1.1,2.5-2.5v-41 C44,3.1,42.9,2,41.5,2z M36,22l-5-6l-5,6V4.1C26,2.9,26.8,2,28,2h5.9C35,2,36,2.9,36,4.1V22z'
     ));
   }
 }

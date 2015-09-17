@@ -8,8 +8,10 @@ html, body {
 
 .arrow {
   background-color: white;
-  background-size: cover;
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%3E%3Cpolygon%20fill%3D%22blue%22%20points%3D%2250%2C%20100%200%2C%200%200%2C%20100%22%2F%3E%3C%2Fsvg%3E"); }
+  background-size: cover; }
 
 .arrow {
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%3E%3Cpolygon%20fill%3D%22green%22%20points%3D%2250%2C%20100%200%2C%200%200%2C%20100%22%2F%3E%3C%2Fsvg%3E"); }
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg%20%3E%3Cpolygon%20fill%3D%22green%22%20points%3D%2250%2C%20100%200%2C%200%200%2C%20100%22%2F%3E%3Cpolygon%20fill%3D%22blue%22%20points%3D%2250%2C%20100%200%2C%200%200%2C%20100%22%20transform%3D%22translateX%28100%29%22%2F%3E%3C%2Fsvg%3E"); }
+
+.dms {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2048%2048%22%20enable%2Dbackground%3D%22new%200%200%2048%2048%22%20xml%3Aspace%3D%22preserve%22%20xmlns%3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%3E%3Crect%20x%3D%224%22%20y%3D%222%22%20fill%3D%22%23010101%22%20width%3D%224%22%20height%3D%2246%22%2F%3E%3Cpath%20fill%3D%22%23010101%22%20d%3D%22M41%2E5%2C2H38c%2D0%2E4%2D0%2E9%2D1%2E4%2D2%2E1%2D2%2E3%2D2h%2D9%2E2c%2D1%2C0%2D1%2E9%2C1%2E1%2D2%2E3%2C2H10v46h31%2E5c1%2E4%2C0%2C2%2E5%2D1%2E1%2C2%2E5%2D2%2E5v%2D41%20C44%2C3%2E1%2C42%2E9%2C2%2C41%2E5%2C2z%20M36%2C22l%2D5%2D6l%2D5%2C6V4%2E1C26%2C2%2E9%2C26%2E8%2C2%2C28%2C2h5%2E9C35%2C2%2C36%2C2%2E9%2C36%2C4%2E1V22z%22%2F%3E%3C%2Fsvg%3E"); }
