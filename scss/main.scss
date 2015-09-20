@@ -1,5 +1,4 @@
 @import '../node_modules/sassdash/index';
-@import 'utils/encode';
 
 $_SVG_STACK: null !global;
 
@@ -32,7 +31,7 @@ $_SVG_STACK: null !global;
     $element: _modify($element, 'attrs',
       _defaults (xmlns: 'http://www.w3.org/2000/svg'));
 
-    background-image: url("data:image/svg+xml;charset=utf8,#{encode(svg-render($element))}");
+    background-image: url("data:image/svg+xml;charset=utf8,#{_encode(svg-render($element))}");
 
     $_SVG_STACK: null !global;
   }

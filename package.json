@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/davidkpiano/sass-svg#readme",
   "dependencies": {
-    "sassdash": "^0.6.1"
+    "sassdash": "^0.6.2"
   }
 }
