@@ -1,6 +1,8 @@
 # sass-svg
 Inline SVG for Sass.
 
+(Made using [Sassdash](https://github.com/davidkpiano/sassdash)!)
+
 ## Quick Start
 - `npm install sass-svg --save`
 
@@ -21,7 +23,7 @@ Inline SVG for Sass.
 **Result:**
 ```css
 .arrow {
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns
     %3D%22http%3A%2F%2Fwww%2Ew3%2Eorg%2F2000%2Fsvg%22%3E%3Cpolygon
     %20fill%3D%22green%22%20points%3D%2250%2C%20100%200%2C%200%200
     %2C%20100%22%2F%3E%3C%2Fsvg%3E");
@@ -94,4 +96,7 @@ SVG elements can be (infinitely) nested, as well:
 }
 ```
 
-Always remember to include the root `<svg>` element! You can simply `@include svg { ... }` (which defaults to `type: 'svg'`), and you can provide just attributes: `@include svg((x: 0, y: 0, ...)) { ... }` (which also defaults to `type: svg`).
+Always remember to include the root `<svg>` element! You can simply:
+
+- `@include svg { ... }` (which defaults to `type: 'svg'`), and/or...
+- provide just attributes: `@include svg((x: 0, y: 0, ...)) { ... }` (which also defaults to `type: 'svg'`).
