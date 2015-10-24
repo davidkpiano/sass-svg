@@ -100,3 +100,9 @@ Always remember to include the root `<svg>` element! You can simply:
 
 - `@include svg { ... }` (which defaults to `type: 'svg'`), and/or...
 - provide just attributes: `@include svg((x: 0, y: 0, ...)) { ... }` (which also defaults to `type: 'svg'`).
+
+## Warnings and Notes
+
+Please note: use this system with caution. While it provides for easy organization, access and editing of SVG within your stylesheets, it can cause performance delays in production due to the data URI encoding of the SVG within the CSS itself. You can read more about this issue [here](http://www.mobify.com/blog/base64-does-not-impact-data-uri-performance/).
+
+The more complex the SVG, the more code is converted to CSS, thus bloating your output stylesheet. To prevent issues, only use small, non-complex SVG assets and be cognizant of your CSS output.
