@@ -1,4 +1,4 @@
-@import '../node_modules/sassdash/index';
+@import '../../node_modules/sassdash/index';
 
 $_SVG_STACK: null !global;
 
@@ -23,7 +23,7 @@ $_SVG_STACK: null !global;
     children: $_SVG_STACK
   );
 
-  @if $previous != null {  
+  @if $previous != null {
     $_SVG_STACK: $previous !global;
 
     $_SVG_STACK: append($_SVG_STACK, $element) !global;
