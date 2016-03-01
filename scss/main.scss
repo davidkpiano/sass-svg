@@ -31,6 +31,8 @@ $_SVG_DEFAULT_ATTRS: (xmlns: 'http://www.w3.org/2000/svg') !global;
   } @else {
     $element-attrs: map-merge(_get($element, 'attrs'), (xmlns: 'http://www.w3.org/2000/svg'));
 
+    $element: map-merge($element, (attrs: $element-attrs));
+
     background-image: url("data:image/svg+xml;charset=utf8,#{_encode(svg-render($element))}");
 
     $_SVG_STACK: null !global;
