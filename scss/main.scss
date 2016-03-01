@@ -1,6 +1,7 @@
 @import '../../sassdash/index';
 
 $_SVG_STACK: null !global;
+$_SVG_DEFAULT_ATTRS: (xmlns: 'http://www.w3.org/2000/svg') !global;
 
 @mixin svg($type: 'svg', $attrs: null) {
   $previous: $_SVG_STACK;
@@ -28,8 +29,7 @@ $_SVG_STACK: null !global;
 
     $_SVG_STACK: append($_SVG_STACK, $element) !global;
   } @else {
-    $element: _modify($element, 'attrs',
-      _defaults (xmlns: 'http://www.w3.org/2000/svg'));
+    $element-attrs: map-merge(_get($element, 'attrs'), (xmlns: 'http://www.w3.org/2000/svg'));
 
     background-image: url("data:image/svg+xml;charset=utf8,#{_encode(svg-render($element))}");
 
