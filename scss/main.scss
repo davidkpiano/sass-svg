@@ -1,4 +1,7 @@
-@import '../node_modules/sassdash/index';
+
+@if not function-exists(_encode) {
+  @error 'Sassdash not found. Please import Sassdash in your project before importing Sass-SVG.';
+}
 
 $_SVG_STACK: null !global;
 $_SVG_DEFAULT_ATTRS: (xmlns: 'http://www.w3.org/2000/svg') !global;
