@@ -6,7 +6,7 @@
 $_SVG_STACK: null !global;
 $_SVG_DEFAULT_ATTRS: (xmlns: 'http://www.w3.org/2000/svg') !global;
 
-@mixin svg($type: 'svg', $attrs: null) {
+@mixin svg($type: 'svg', $attrs: ()) {
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
