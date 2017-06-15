@@ -6,19 +6,22 @@
 $_SVG_STACK: null !global;
 $_SVG_DEFAULT_ATTRS: (xmlns: 'http://www.w3.org/2000/svg') !global;
 
-@mixin svg($type: 'svg', $attrs: ()) {
+@mixin svg($type: null, $attrs: null) {
   $previous: $_SVG_STACK;
   $_SVG_STACK: () !global;
 
   @content;
 
   // Argument juggling
-  @if (type-of($type) == 'map'
+  @if ((not $type or type-of($type) == 'map')
     and not $attrs
     and not $previous
   ) {
     $attrs: $type;
     $type: 'svg';
+  }
+  @if (not $attrs) {
+    $attrs: ();
   }
 
   $element: (
